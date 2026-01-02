@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BUKA YAA HIHIIII 💕</title>
 
 <style>
@@ -14,7 +15,7 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  background: linear-gradient(180deg, #ff9a9e, #fad0c4, #fad0c4);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -22,50 +23,87 @@ body {
   color: white;
 }
 
+/* CONTAINER */
 .container {
+  width: 90%;
+  max-width: 400px;
   text-align: center;
+  padding: 30px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 30px rgba(255, 75, 110, 0.6);
   z-index: 10;
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.2em;
   margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  opacity: 0.95;
 }
 
+/* BUTTON */
 button {
-  padding: 12px 30px;
+  padding: 14px 35px;
   border: none;
-  border-radius: 30px;
-  background: #ff4b6e;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #ff4b6e, #ff6f91);
   color: white;
   font-size: 1.1em;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 0 20px rgba(255, 75, 110, 0.8);
 }
 
 button:hover {
-  background: #ff2f5b;
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 75, 110, 1);
 }
 
 /* FLOWERS */
 .flower {
   position: absolute;
   top: -50px;
-  font-size: 24px;
   animation: fall linear infinite;
+  pointer-events: none;
 }
 
 @keyframes fall {
   from {
     transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
   to {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* MOBILE PORTRAIT OPTIMIZATION */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2em;
+  }
+  p {
+    font-size: 1em;
   }
 }
 </style>
@@ -75,11 +113,11 @@ button:hover {
 
 <div class="container">
   <h1>Love You Alena 💖</h1>
-  <p>Semangat For Today💖</p>
-  <button onclick="playRomance()">Play Music 🎵</button>
+  <p>Semangat For Today 🤍<br>lofyuuuu</p>
+  <button onclick="playRomance()">Play Music 🎶</button>
 </div>
 
-<audio id="music" src="lagu.mp3" controls></audio>
+<audio id="music" src="lagu.mp3" loop></audio>
 
 <script>
 const music = document.getElementById("music");
@@ -90,20 +128,20 @@ function playRomance() {
 }
 
 function createFlowers() {
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 40; i++) {
     let flower = document.createElement("div");
     flower.className = "flower";
-    flower.innerHTML = "🌸";
+    flower.innerHTML = Math.random() > 0.5 ? "🌸" : "💖";
 
     flower.style.left = Math.random() * 100 + "vw";
-    flower.style.animationDuration = (5 + Math.random() * 5) + "s";
-    flower.style.fontSize = (20 + Math.random() * 20) + "px";
+    flower.style.animationDuration = (6 + Math.random() * 6) + "s";
+    flower.style.fontSize = (18 + Math.random() * 25) + "px";
 
     document.body.appendChild(flower);
 
     setTimeout(() => {
       flower.remove();
-    }, 10000);
+    }, 12000);
   }
 }
 </script>
